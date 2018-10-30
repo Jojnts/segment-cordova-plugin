@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin id="segment-cordova-plugin"
-	xmlns="http://apache.org/cordova/ns/plugins/1.0"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	version="1.1.0" >
+        xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        version="1.1.0" >
 
     <name>SegmentCordovaPlugin</name>
     <license>MIT License</license>
@@ -31,6 +31,7 @@
         <source-file src="src/android/SegmentCordovaPlugin.java" target-dir="src/com/segment/cordova/plugin" />
 
         <framework src="com.segment.analytics.android:analytics:4.3.0"/>
+        <framework src="com.segment.analytics.android.integrations:adjust:+" />
     </platform>
 
     <platform name="ios">
@@ -43,13 +44,15 @@
         <header-file src="src/ios/SegmentCordovaPlugin.h" target-dir="SegmentCordovaPlugin"/>
         <source-file src="src/ios/SegmentCordovaPlugin.m" target-dir="SegmentCordovaPlugin"/>
 
+        <framework src="Segment-Adjust" type="podspec" spec="~> 1.1.3"/>
+
         <!-- If want to use CocoaPods. Remove framework and hook, and use this -->
         <!-- <framework src="Analytics" type="podspec" spec="~> 3.0"/> -->
 
         <!-- If use Cordova7, use "embed" so it can put custom framework in the 'Embedded Binaries' section -->
         <!-- Be sure to remove hook -->
         <!-- https://cordova.apache.org/docs/en/latest/plugin_ref/spec.html#framework -->
-        <framework src="lib/ios/Analytics.framework" custom="true" embed="true"/>
+        <!--<framework src="lib/ios/Analytics.framework" custom="true" embed="true"/>-->
         <!--<framework src="lib/ios/Analytics.framework" custom="true" />-->
 
         <!-- Cordova version less than 7 won't support embed feature in framework. -->

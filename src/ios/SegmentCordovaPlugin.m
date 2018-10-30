@@ -1,4 +1,5 @@
 #import "SegmentCordovaPlugin.h"
+#import <Segment-Adjust/SEGAdjustIntegrationFactory.h>
 
 @implementation SegmentCordovaPlugin
 
@@ -63,6 +64,7 @@
                 }
             }
         }
+        [configuration use:[SEGAdjustIntegrationFactory instance]];
         [SEGAnalytics setupWithConfiguration:configuration];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     } else {
