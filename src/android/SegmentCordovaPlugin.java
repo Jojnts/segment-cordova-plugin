@@ -4,6 +4,7 @@ import com.segment.analytics.Analytics;
 import com.segment.analytics.Options;
 import com.segment.analytics.Properties;
 import com.segment.analytics.Traits;
+import com.segment.analytics.android.integrations.adjust.AdjustIntegration;
 
 import android.util.Log;
 
@@ -79,7 +80,8 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
 
         try {
             if (null != id && id.length() > 0) {
-                builder = new Analytics.Builder(cordova.getActivity().getApplicationContext(), id);
+                builder = new Analytics.Builder(cordova.getActivity().getApplicationContext(), id)
+                              .use(AdjustIntegration.FACTORY);;
 
                 if (obj != null) {
                     if (obj.has("trackApplicationLifecycleEvents")) {
