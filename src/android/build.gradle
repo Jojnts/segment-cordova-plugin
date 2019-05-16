@@ -3,5 +3,5 @@ repositories {
 }
 
 dependencies {
-	compile 'com.github.Jojnts:analytics-android-integration-adjust:7f588be'
+	compile 'com.github.Jojnts:analytics-android-integration-adjust:master'
 }
