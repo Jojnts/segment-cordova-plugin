@@ -31,7 +31,7 @@
         <source-file src="src/android/SegmentCordovaPlugin.java" target-dir="src/com/segment/cordova/plugin" />
 
         <framework src="com.segment.analytics.android:analytics:4.3.0"/>
-        <framework src="com.segment.analytics.android.integrations:adjust:+" />
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference"/>
     </platform>
 
     <platform name="ios">
