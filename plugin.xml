@@ -45,6 +45,9 @@
         <source-file src="src/ios/SegmentCordovaPlugin.m" target-dir="SegmentCordovaPlugin"/>
 
         <podspec>
+          <config>
+            <source url="https://github.com/CocoaPods/Specs.git"/>
+          </config>
           <pods>
             <pod name="Segment-Adjust" git="git@github.com:Jojnts/analytics-ios-integration-adjust.git"/>
           </pods>
