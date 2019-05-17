@@ -44,7 +44,11 @@
         <header-file src="src/ios/SegmentCordovaPlugin.h" target-dir="SegmentCordovaPlugin"/>
         <source-file src="src/ios/SegmentCordovaPlugin.m" target-dir="SegmentCordovaPlugin"/>
 
-        <framework src="Segment-Adjust" type="podspec" spec="~> 1.1.3"/>
+        <podspec>
+          <pods>
+            <pod name="Segment-Adjust" git="git@github.com:Jojnts/analytics-ios-integration-adjust.git"/>
+          </pods>
+        </podspec>
 
         <!-- If want to use CocoaPods. Remove framework and hook, and use this -->
         <!-- <framework src="Analytics" type="podspec" spec="~> 3.0"/> -->
