@@ -25,6 +25,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import com.segment.analytics.android.integrations.mixpanel.MixpanelIntegration;
+
 public class SegmentCordovaPlugin extends CordovaPlugin {
 
     private static final String ACTION_WITH_CONFIGURATION = "startWithConfiguration";
@@ -131,6 +133,9 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
                     if (obj.has("launchOptions")) {
                         options = toOptions(obj.optJSONObject("launchOptions"));
                         builder.defaultOptions(options);
+                    }
+                    if (obj.has("enableMixpanelIntegration")) {
+                        builder.use(MixpanelIntegration.FACTORY);
                     }
                     // middleware, connectionFactory, optOut are not currently supported.
                 }
