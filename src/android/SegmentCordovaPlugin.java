@@ -324,7 +324,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
 
             isInitialized = analytics != null;
 
-            callbackContext.success((int) isInitialized);
+            callbackContext.success(isInitialized ? 1 : 0);
         } catch (Exception ex) {
             Log.getStackTraceString(ex);
         }
