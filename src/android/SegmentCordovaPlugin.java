@@ -35,6 +35,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
     private static final String ACTION_ALIAS = "alias";
     private static final String ACTION_GET_ANONYMOUS_ID = "getAnonymousId";
     private static final String ACTION_RESET = "reset";
+    private static final String ACTION_IS_INITIALIZED = "isInitialized";
 
     private static DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
@@ -66,6 +67,9 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
                 return true;
             } else if (ACTION_RESET.equals(action)) {
                 this.reset(callbackContext);
+                return true;
+            } else if (ACTION_IS_INITIALIZED.equals(action)) {
+                this.isInitialized(callbackContext);
                 return true;
             }
         }
@@ -310,6 +314,18 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
         } catch (Exception ex) {
             Log.getStackTraceString(ex);
         }
+    }
+
+    private void isInitialized(CallbackContext callbackContext) {
+      try {
+          Analytics analytics = Analytics.with(cordova.getActivity().getApplicationContext());
+
+          Boolean isInitialized = analytics != null;
+
+          callbackContext.success(isInitialized);
+      } catch (Exception ex) {
+          Log.getStackTraceString(ex);
+      }
     }
 
     /**
