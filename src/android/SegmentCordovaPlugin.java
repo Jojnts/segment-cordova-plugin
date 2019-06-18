@@ -317,15 +317,17 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
     }
 
     private void isInitialized(CallbackContext callbackContext) {
-      try {
-          Analytics analytics = Analytics.with(cordova.getActivity().getApplicationContext());
+        boolean isInitialized;
 
-          Boolean isInitialized = analytics != null;
+        try {
+            Analytics analytics = Analytics.with(cordova.getActivity().getApplicationContext());
 
-          callbackContext.success(isInitialized);
-      } catch (Exception ex) {
-          Log.getStackTraceString(ex);
-      }
+            isInitialized = analytics != null;
+
+            callbackContext.success(isInitialized);
+        } catch (Exception ex) {
+            Log.getStackTraceString(ex);
+        }
     }
 
     /**
