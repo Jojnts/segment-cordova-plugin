@@ -39,7 +39,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
 
     private static DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
-    private Analytics instance = null;
+    private boolean isInitialized = false;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -145,7 +145,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
                 // Set the initialized instance as a globally accessible instance.
                 Analytics.setSingletonInstance(analytics);
 
-                instance = analytics;
+                isInitialized = true;
 
                 callbackContext.success("Segment configuration started");
             } else {
@@ -321,11 +321,7 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
     }
 
     private void isInitialized(CallbackContext callbackContext) {
-        boolean isInitialized;
-
         try {
-            isInitialized = instance != null;
-
             callbackContext.success(isInitialized ? 1 : 0);
         } catch (Exception ex) {
             Log.getStackTraceString(ex);
