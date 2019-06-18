@@ -324,8 +324,6 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
         boolean isInitialized;
 
         try {
-            // Analytics analytics = Analytics.with(cordova.getActivity().getApplicationContext());
-
             isInitialized = instance != null;
 
             callbackContext.success(isInitialized ? 1 : 0);
