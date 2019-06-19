@@ -67,6 +67,7 @@
         [configuration use:[SEGAdjustIntegrationFactory instance]];
         [SEGAnalytics setupWithConfiguration:configuration];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        isInitialized = true;
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Key is required."];
     }
@@ -229,5 +230,15 @@
 
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
+
+- (void)isInitialized:(CDVInvokedUrlCommand*)command {
+    CDVPluginResult* pluginResult = nil;
+
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                    messageAsInt:isInitialized];
+
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 
 @end
