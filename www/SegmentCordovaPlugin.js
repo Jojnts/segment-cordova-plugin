@@ -35,10 +35,6 @@ SegmentCordovaPlugin.prototype.reset = function(inputs, success, error) {
 };
 
 SegmentCordovaPlugin.prototype.isInitialized = function(inputs, success, error) {
-    console.log('isInitialized called!');
-    console.log('inputs', inputs);
-    console.log('success', success);
-    console.log('error', error);
     cordova.exec(success, error, 'SegmentCordovaPlugin', 'isInitialized', [inputs]);
 };
 
