@@ -235,7 +235,7 @@
     CDVPluginResult* pluginResult = nil;
 
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
-                                    messageAsInt:isInitialized];
+                                    messageAsInt:(isInitialized ? 1 : 0)];
 
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }

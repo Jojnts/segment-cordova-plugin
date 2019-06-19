@@ -4,7 +4,6 @@
 
 @interface SegmentCordovaPlugin : CDVPlugin {
   // Member variables go here.
-
 @private
   boolean isInitialized;
 }
@@ -17,5 +16,6 @@
 - (void) alias: (CDVInvokedUrlCommand*)command;
 - (void) getAnonymousId: (CDVInvokedUrlCommand*)command;
 - (void) reset: (CDVInvokedUrlCommand*)command;
+- (void) isInitialized: (CDVInvokedUrlCommand*)command;
 
 @end
