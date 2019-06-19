@@ -5,7 +5,7 @@
 @interface SegmentCordovaPlugin : CDVPlugin {
   // Member variables go here.
 @private
-  boolean isInitialized;
+  Boolean isInitialized;
 }
 
 - (void) startWithConfiguration:(CDVInvokedUrlCommand*)command;
