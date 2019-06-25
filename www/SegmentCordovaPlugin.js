@@ -34,4 +34,8 @@ SegmentCordovaPlugin.prototype.reset = function(inputs, success, error) {
     cordova.exec(success, error, 'SegmentCordovaPlugin', 'reset', [inputs]);
 };
 
+SegmentCordovaPlugin.prototype.isInitialized = function(inputs, success, error) {
+    cordova.exec(success, error, 'SegmentCordovaPlugin', 'isInitialized', [inputs]);
+};
+
 module.exports = new SegmentCordovaPlugin();

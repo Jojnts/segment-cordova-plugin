@@ -35,8 +35,11 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
     private static final String ACTION_ALIAS = "alias";
     private static final String ACTION_GET_ANONYMOUS_ID = "getAnonymousId";
     private static final String ACTION_RESET = "reset";
+    private static final String ACTION_IS_INITIALIZED = "isInitialized";
 
     private static DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+    private boolean isInitialized = false;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -66,6 +69,9 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
                 return true;
             } else if (ACTION_RESET.equals(action)) {
                 this.reset(callbackContext);
+                return true;
+            } else if (ACTION_IS_INITIALIZED.equals(action)) {
+                this.isInitialized(callbackContext);
                 return true;
             }
         }
@@ -138,6 +144,8 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
                 Analytics analytics = builder.build();
                 // Set the initialized instance as a globally accessible instance.
                 Analytics.setSingletonInstance(analytics);
+
+                isInitialized = true;
 
                 callbackContext.success("Segment configuration started");
             } else {
@@ -307,6 +315,14 @@ public class SegmentCordovaPlugin extends CordovaPlugin {
                     .reset();
 
             callbackContext.success();
+        } catch (Exception ex) {
+            Log.getStackTraceString(ex);
+        }
+    }
+
+    private void isInitialized(CallbackContext callbackContext) {
+        try {
+            callbackContext.success(isInitialized ? 1 : 0);
         } catch (Exception ex) {
             Log.getStackTraceString(ex);
         }
