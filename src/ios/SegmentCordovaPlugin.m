@@ -1,6 +1,8 @@
 #import "SegmentCordovaPlugin.h"
 #import <Segment-Adjust/SEGAdjustIntegrationFactory.h>
 
+#import <Segment-Mixpanel/SEGMixpanelIntegrationFactory.h>
+
 @implementation SegmentCordovaPlugin
 
 - (void) pluginInitialize {
@@ -62,9 +64,13 @@
                 if ([configOptions objectForKey:@"defaultOptions"] != nil) {
                     configuration.launchOptions = [configOptions objectForKey:@"defaultOptions"];
                 }
+                if ([configOptions objectForKey:@"enableMixpanelIntegration"] != nil) {
+                    [configuration use:[SEGMixpanelIntegrationFactory instance]];
+                }
             }
         }
         [configuration use:[SEGAdjustIntegrationFactory instance]];
+
         [SEGAnalytics setupWithConfiguration:configuration];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         isInitialized = true;
