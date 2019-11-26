@@ -46,7 +46,7 @@
 
         <podspec>
           <config>
-            <source url="https://github.com/CocoaPods/Specs.git"/>
+            <source url="https://cdn.cocoapods.org/"/>
           </config>
           <pods>
             <pod name="Segment-Adjust" git="git@github.com:Jojnts/analytics-ios-integration-adjust.git"/>
